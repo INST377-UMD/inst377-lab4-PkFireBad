@@ -1,0 +1,93 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Practice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .section {
+            border: 2px solid black;
+            padding: 40px;
+            margin: 40px 0;
+            background-color: rgb(72, 132, 180);
+        }
+
+        .section button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .section form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Practice</h1>
+
+    <div class="section" id="alertSection">
+        <form id="alertForm">
+            <label for="nameInput">Enter name:</label>
+            <input type="text" id="nameInput" required>
+            <button type="button" onclick="alertMe()">Alert Me</button>
+        </form>
+    </div>
+
+    <div class="section" id="colorSection">
+        <button onclick="changeColor()">Change Color</button>
+    </div>
+
+
+    <div class="section" id="textTesterSection">
+        <form id="textForm">
+            <label for="textInput">Enter text with no special characters:</label>
+            <input type="text" id="textInput">
+            <button type="button" onclick="validateText()">Validate Text</button>
+        </form>
+    </div>
+
+
+    <div class="section" id="addTextSection">
+        <button onclick="addText()">Add Text</button>
+    </div>
+
+    <script>
+
+        function alertMe() {
+            const name = document.getElementById('nameInput').value;
+            if (name) {
+                alert(`Hi ${name}!`);
+            }
+        }
+
+        let isPurple = true;
+        function changeColor() {
+            if (isPurple) {
+                document.body.style.backgroundColor = 'orange';
+            } else {
+                document.body.style.backgroundColor = 'purple';
+            }
+            isPurple = !isPurple;
+        }
+
+        function validateText() {
+            const text = document.getElementById('textInput').value;
+            const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+            if (validation.test(text)) {
+                alert('Bad!');
+            } else {
+                alert('Good!');
+            }
+        }
+
+        function addText() {
+            const heading = document.querySelector('h1');
+            heading.innerText += ' Add Text';
+        }
+    </script>
+</body>
